@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      customerId: {
+      customerid: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -16,7 +16,7 @@ module.exports = {
           key: "id"
         }
       },
-      destinationId: {
+      destinationid: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {

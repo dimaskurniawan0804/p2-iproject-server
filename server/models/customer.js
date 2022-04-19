@@ -7,10 +7,10 @@ module.exports = (sequelize, DataTypes) => {
   class Customer extends Model {
     static associate(models) {
       Customer.belongsToMany(models.Destination, {
-        through: "CustomerDestinations",
-        foreignKey: "customerId"
+        through: models.CustomerDestination,
+        foreignKey: "customerid"
       })
-      Customer.hasMany(models.Gallery, { foreignKey: "customerId" })
+      Customer.hasMany(models.Gallery, { foreignKey: "customerid" })
     }
   }
   Customer.init({

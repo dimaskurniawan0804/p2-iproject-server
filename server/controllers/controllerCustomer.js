@@ -26,19 +26,17 @@ class ControllerCustomer {
                     pass: "dimaskurniawan0804"
                 }
             });
-
-            console.log(transporter, "<<<<<<<");
-
-            let info = await transporter.sendMail({
-                from: 'dimaskurniawan0000@outlook.co.id', // sender address
-                to: "ichbindimas@gmail.com", // list of receivers
-                subject: "Registration Information", // Subject line
-                text: "Hello world? mantapppp", // plain text body
-                html: `<b>Hello ${cusFullName}</b> 
-                <h1>You just registration to MALABAN ITINERARY</h1><br>`, // html body
-            });
-
-            console.log(info, "+++++++++++");
+            if (response) {
+                let info = await transporter.sendMail({
+                    from: 'dimaskurniawan0000@outlook.co.id', // sender address
+                    to: "ichbindimas@gmail.com", // list of receivers
+                    subject: "Registration Information", // Subject line
+                    text: "Hello world? mantapppp", // plain text body
+                    html: `<b>Hello ${cusFullName}</b> 
+                    <h1>You just registration to MALABAN ITINERARY</h1><br>`, // html body
+                });
+                console.log(info, "+++++++++++");
+            }
 
         } catch (error) {
             console.log(error)
@@ -81,29 +79,6 @@ class ControllerCustomer {
                 fullName: customer.firstName + " " + customer.lastName,
                 access_token,
             })
-
-            let testAccount = await nodemailer.createTestAccount();
-            console.log(testAccount);
-
-            let transporter = nodemailer.createTransport({
-                service: "hotmail",
-                auth: {
-                    user: "dimaskurniawan0000@outlook.co.id",
-                    pass: "dimaskurniawan0804"
-                }
-            });
-
-            console.log(transporter, "<<<<<<<");
-
-            let info = await transporter.sendMail({
-                from: 'dimaskurniawan0000@outlook.co.id', // sender address
-                to: "ichbindimas@gmail.com", // list of receivers
-                subject: "Hello ✔, masuk dari nodemialer i project", // Subject line
-                text: "Hello world? mantapppp", // plain text body
-                html: `<b>Hello world?</b> <img src="https://www.libur.co/wp-content/uploads/2021/07/Air-Terjun-Jenum.jpg">`, // html body
-            });
-
-            console.log(info, "+++++++++++");
 
         } catch (error) {
             console.log(error);
