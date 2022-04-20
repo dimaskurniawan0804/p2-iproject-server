@@ -10,7 +10,7 @@ module.exports = {
       },
       imageUrl: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       location: {
         allowNull: false,

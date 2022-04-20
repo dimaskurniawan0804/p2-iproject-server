@@ -85,6 +85,30 @@ class ControllerCustomer {
             next(error)
         }
     }
+
+    // ! get my itinerary
+    static async getMyList(req, res, next) {
+        const { id } = req.Customer
+        try {
+            const response = await CustomerDestination.findAll({
+                where: {
+                    customerId: id
+                },
+                attributes: {
+                    exclude: ["createdAt", "updatedAt"]
+                },
+                include: {
+                    model: Destination,
+                    attributes: {
+                        exclude: ["createdAt", "updatedAt"]
+                    }
+                },
+            })
+            res.status(200).json(response)
+        } catch (error) {
+            next(error)
+        }
+    }
 }
 
 module.exports = ControllerCustomer

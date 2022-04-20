@@ -23,6 +23,9 @@ const errorHandler = async (error, req, res, next) => {
         case "You are not authorized":
             res.status(403).json({ message: error.name })
             break;
+        case "Same Destination List":
+            res.status(403).json({ message: "This destination is already on your favorite list" })
+            break;
 
         default:
             break;

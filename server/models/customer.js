@@ -8,9 +8,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Customer.belongsToMany(models.Destination, {
         through: models.CustomerDestination,
-        foreignKey: "customerid"
+        foreignKey: "customerId"
       })
-      Customer.hasMany(models.Gallery, { foreignKey: "customerid" })
+      Customer.hasMany(models.Gallery, { foreignKey: "customerId" })
     }
   }
   Customer.init({

@@ -5,11 +5,11 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class Gallery extends Model {
     static associate(models) {
-      Gallery.belongsTo(models.Customer)
+      Gallery.belongsTo(models.Customer, { foreignKey: "customerId" })
     }
   }
   Gallery.init({
-    imageUrl: DataTypes.INTEGER,
+    imageUrl: DataTypes.STRING,
     location: DataTypes.STRING,
     customerId: DataTypes.INTEGER
   }, {
