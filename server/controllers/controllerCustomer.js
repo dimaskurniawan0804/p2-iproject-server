@@ -23,6 +23,8 @@ class ControllerCustomer {
                 email: response.email
             })
 
+            const customerEmail = response.email
+
             // ?send email success registration
 
             let transporter = nodemailer.createTransport({
@@ -35,13 +37,15 @@ class ControllerCustomer {
             if (response) {
                 let info = await transporter.sendMail({
                     from: 'dimaskurniawan0000@outlook.co.id', // sender address
-                    to: "ichbindimas@gmail.com", // list of receivers
+                    to: customerEmail, // list of receivers
                     subject: "Registration Information", // Subject line
                     text: "Hello world? mantapppp", // plain text body
                     html: `<b>Hello ${cusFullName}</b> 
-                    <h1>You just registration to MALABAN ITINERARY</h1><br>`, // html body
+                    <h1>You just registration to MALABAN ITINERARY</h1><br>
+                    <h1>Make your favorite travel plans in Berau, East Borneo</h1><br>
+                    `, // html body
                 });
-                console.log(info, "+++++++++++");
+                console.log(info, "success send registration email");
             }
 
         } catch (error) {
