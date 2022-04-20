@@ -12,6 +12,21 @@ class ControllerDestination {
             next(error)
         }
     }
+
+    static async destinationDetail(req, res, next) {
+        const { destinationId } = req.params
+        try {
+            const response = await Destination.findByPk(destinationId, {
+                attributes: {
+                    exclude: ["createdAt", "updatedAt"]
+                }
+            })
+            res.status(200).json(response)
+        } catch (error) {
+            console.log(error);
+            next(error)
+        }
+    }
 }
 
 module.exports = ControllerDestination
