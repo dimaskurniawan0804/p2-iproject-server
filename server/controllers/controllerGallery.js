@@ -2,19 +2,20 @@ const { Gallery } = require('../models/index');
 
 class ControllerGallery {
     static async postGallery(req, res, next) {
-        // console.log(req.file, "<<<<<<<");
-        const { id } = req.Customer
-        const { location } = req.body
-        try {
-            const response = await Gallery.create({
-                imageUrl: req.file.filename,
-                location: location,
-                customerId: id
-            })
-            res.status(201).json(response)
-        } catch (error) {
-            next(error);
-        }
+        console.log(req.file, "<<<<<<<");
+        // const { id } = req.Customer
+        // const { location } = req.body
+        // try {
+        //     const response = await Gallery.create({
+        //         imageUrl: req.file.filename,
+        //         location: location,
+        //         customerId: id
+        //     })
+        //     res.status(201).json(response)
+        // } catch (error) {
+        //     console.log(error);
+        //     // next(error);
+        // }
     }
 
     static async deleteGallery(req, res, next) {

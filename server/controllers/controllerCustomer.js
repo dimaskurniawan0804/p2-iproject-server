@@ -5,8 +5,14 @@ const nodemailer = require("nodemailer");
 
 class ControllerCustomer {
     static async cusRegister(req, res, next) {
-        const { firstName, lastName, email, password, phoneNumber, address } = req.body
+        let { firstName, lastName, email, password, phoneNumber, address } = req.body
         try {
+            if (!phoneNumber) {
+                phoneNumber = "Customer don't input phone number"
+            }
+            if (!address) {
+                address = "Customer don't input address"
+            }
             const response = await Customer.create({
                 firstName, lastName, email, password, phoneNumber, address
             })
