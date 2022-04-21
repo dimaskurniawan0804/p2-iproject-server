@@ -4,18 +4,35 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Gallery extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      Gallery.belongsTo(models.Customer)
+      Gallery.belongsTo(models.Customer, { foreignKey: "customerId" })
     }
   }
   Gallery.init({
-    imageUrl: DataTypes.INTEGER,
-    location: DataTypes.STRING,
+    imageUrl: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: { msg: "Image is required" },
+        notNull: { msg: "Image is required" }
+      }
+    },
+    captions: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: { msg: "Captions is required" },
+        notNull: { msg: "Captions is required" }
+      }
+    },
+    location: {
+      allowNull: false,
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: { msg: "Location is required" },
+        notNull: { msg: "Location is required" }
+      }
+    },
     customerId: DataTypes.INTEGER
   }, {
     sequelize,
