@@ -14,6 +14,9 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
+// app.use(express.static(__dirname + './asset'));
+app.use('/asset', express.static('asset'));
+
 app.use(router)
 
 app.use(errorHandler)
