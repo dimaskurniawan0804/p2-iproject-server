@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Gallery.init({
     imageUrl: DataTypes.STRING,
+    captions: DataTypes.STRING,
     location: DataTypes.STRING,
     customerId: DataTypes.INTEGER
   }, {

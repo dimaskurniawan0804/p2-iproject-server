@@ -54,6 +54,7 @@ class ControllerCustomerDestination {
         try {
             const selectedUser = await Customer.findByPk(id)
             const customerEmail = selectedUser.email
+            console.log(customerEmail);
             const selectedItinerary = await CustomerDestination.findAll({
                 where: {
                     customerId: id
@@ -73,7 +74,6 @@ class ControllerCustomerDestination {
             selectedItinerary.forEach((el, i) => {
                 temp += `<p>${i + 1}. ${el.Destination.title}</p><br>\n`
             })
-            // console.log(temp);
             let transporter = nodemailer.createTransport({
                 service: "hotmail",
                 auth: {
