@@ -1,0 +1,16 @@
+npm init -y
+
+sequelize model:create --name Customer --attributes firstName:string,lastName:string,email:string,password:string,phoneNumber:string,address:string
+
+sequelize model:create --name Admin --attributes email:integer,password:string
+
+sequelize model:create --name Destination --attributes title:string,description:string,imageUrl:string,location:string,adminId:integer
+
+sequelize model:create --name CustomerDestination --attributes customerId:integer,destinationId:integer
+
+sequelize model:create --name Gallery --attributes imageUrl:integer,location:string,customerId:integer
+
+sequelize seed:generate --name seed-for-dummy-admin-to-Admins
+
+sequelize seed:generate --name seed-for-table-Destinations
+
